@@ -4,12 +4,7 @@ body {
   background-size: cover;
   background-position-y: 0px;
   background-repeat: no-repeat;
-}
-main {
-  height: 93vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  
 }
 
 .main-content {
@@ -48,7 +43,7 @@ main {
 
 .Usuario{
   position: relative;
-  display: block;
+  display: flex;
   color: white;
   font-size: 14px;
   font-family: "montserrat";

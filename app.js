@@ -23,7 +23,7 @@ const data = new MongoDBStore(
         collection: "sessions"
     }
 )
-
+//congig session
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
@@ -45,6 +45,7 @@ app.set("view engine", "handlebars")
 app.use(passport.initialize())
 app.use(passport.session())
 
+//config rotas
 app.get("/login", (req,res) =>{
     res.render("pages/login")
 })
