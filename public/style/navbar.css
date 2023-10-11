@@ -4,8 +4,6 @@
     box-sizing: border-box;
 }
 html {
-    width: 100vw;
-    height: 100vh;
     font-size: 62.5%;
     color: white;
     font-family: 'Lato', sans-serif;
@@ -59,4 +57,8 @@ header {
 
 .menu-content .list-itens a:hover:before {
     width: 100%;
+}
+a{
+    text-decoration: none;
+    color: white;
 }

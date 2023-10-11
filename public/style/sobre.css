@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/* Zerando CSS */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.corpo-sobre {
+    height: 100vh;
+    background: linear-gradient(rgba(17, 17, 17, 0.8), rgba(20, 20, 20, 1)), url(../IMG/SOBRE.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Menu - Header - NavBar */
+
+
+.sobre_mim{
+    text-align: center;
+    font-size: 25px;
+    padding: 30px;
+}
+
+.menu-content {
+    text-transform: uppercase;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.8rem;
+}
+
+/* Menu - Quem Somos */
+
+.quemsomos{
+    color: darkgray;
+    font-size: 20px;
+    margin-top: 20%px;
+    margin-left: 7%;
+    margin-right: 7%;
+}
+  /* Transição de Pagg*/
+
+
+
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}

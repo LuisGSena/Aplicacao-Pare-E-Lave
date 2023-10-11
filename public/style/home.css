@@ -1,10 +1,20 @@
-body {
-  background: linear-gradient(rgba(17, 17, 17, 0.8), rgba(20, 20, 20, 1)), url(../IMG/Fundo\ 2.jpg);
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+.corpo-home {
+  background: linear-gradient(rgba(17, 17, 17, 0.8), rgba(20, 20, 20, 1)), url(../IMG/HOME.avif);
   background-position: center center;
   background-size: cover;
   background-position-y: 0px;
   background-repeat: no-repeat;
-  
+  font-family: 'Lato', sans-serif;
+}
+
+main {
+
+  height: 93vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .main-content {
@@ -31,25 +41,23 @@ body {
 }
 
 /* Botões */
-
-
-.btns{
+.botoes{
+  width: 53%;
   display: flex;
-  justify-content: center;
-  gap: 40px;
-  font-size: 20px;
-  top: 100px;
+  justify-content: space-around;
 }
 
+
+
 .Usuario{
+  font-family: 'Lato', sans-serif;
   position: relative;
-  display: flex;
+  display: block;
   color: white;
   font-size: 14px;
-  font-family: "montserrat";
+  background-color: #61616100;
   text-decoration: none;
   margin: 30px 0;
-  background-color:#61616100;
   border: 2px solid #616161;
   padding: 14px 60px;
   text-transform: uppercase;
@@ -77,14 +85,14 @@ body {
 }
 
 .Empresa{
+  font-family: 'Lato', sans-serif;
   position: relative;
   display: block;
   color: white;
   font-size: 14px;
-  font-family: "montserrat";
   text-decoration: none;
   margin: 30px 0;
-  background-color:#61616100;
+  background-color: #61616100;
   border: 2px solid #616161;
   padding: 14px 60px;
   text-transform: uppercase;
