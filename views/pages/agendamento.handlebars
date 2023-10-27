@@ -1,0 +1,52 @@
+<head>
+    <link rel="stylesheet" href="/style/agendamento.css">
+</head>
+<main class="main">
+    <!--==================== HOME ====================-->
+    <section class="agendamento section">
+      <div class="agendamento_container container">
+
+        <img class="agendamento__img" src="/IMG/lavajatowpp.avif" alt="" />
+
+        <div class="agendamento__textos">
+          <h1 class="agendamento__titulo">Bem vindo ao {{empresa.RazaoSocial}}</h1>
+          <h3 class="agendamento__subtitulo">Seja bem vindo(a) ao lava-jato {{empresa.RazaoSocial}}, venha nos visitar estamos localizado no bairro {{empresa.bairro}}</h3>
+          <h3>Gostou dos nossos serviços? Dê seu feedback!</h3>
+          <ul class="avaliacao">
+            <li class="icone-estrela ativo" data-avaliacao="1"></li>
+            <li class="icone-estrela" data-avaliacao="2"></li>
+            <li class="icone-estrela" data-avaliacao="3"></li>
+            <li class="icone-estrela" data-avaliacao="4"></li>
+            <li class="icone-estrela" data-avaliacao="5"></li>
+          </ul>
+        </div>
+      </div>
+
+      <section class="servico section">
+        <h1 style="margin-right: 10em;" class="servico__titulo">Nossos serviços:</h1>
+        
+          <div class="cards container">
+            <div class="servico__card">
+              <h3 class="servico__subtitulo">Lavagem exterior</h3>
+              <h3 class="servico__subtitulo">R$ 40,00</h3>
+              <input class="checkmark" type="checkbox" name="" id="">
+            </div>
+          </div>
+          <div class="cards container">
+            <div class="servico__card">
+              <h3 class="servico__subtitulo">Lavagem interior</h3>
+              <h3 class="servico__subtitulo"> R$ 60,00</h3>
+              <input class="checkmark" type="checkbox" name="" id="">
+            </div>
+          </div>
+          <div class="cards container">
+            <div class="servico__card">
+              <h3 class="servico__subtitulo">Limpeza de estofados</h3>
+              <h3 style="margin-right: 2.5em ;" class="servico__subtitulo">R$ 90,00</h3>
+              <input style="margin-right: 1.3em ;" class="checkmark" type="checkbox" name="" id="">
+            </div>
+          </div>
+          <a href="/qrcode" class="agendamento__button container">Agendar</a>
+      </section>
+    </section>
+  </main>

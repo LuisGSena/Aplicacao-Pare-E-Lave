@@ -1,9 +1,17 @@
 <head>
     <link rel="stylesheet" href="/style/empresa_login.css">
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get("error");
+
+        if (error) {
+        alert(error);
+        }
+  </script>
 </head>
 <body class="corpo-login-empresa">
 <main id="container">
-        <form id="login_form">
+        <form action="/loginsuccessempr" method="post" id="login_form">
             <!-- FORM HEADER -->
             <div id="form_header">
                 <h1>Login</h1>

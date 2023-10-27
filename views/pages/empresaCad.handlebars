@@ -1,6 +1,7 @@
 
 <head>
     <link rel="stylesheet" href="/style/empresaCad.css">
+    <script src="/js/verifyEmprCad.js"></script>
 </head>
 <body class="corpo-empresa-cad">
 <div class="container">
@@ -8,7 +9,7 @@
             <img src="assets/img//undraw_shopping_re_3wst.svg" alt="">
         </div>
         <div class="form-group">
-            <form action="#" method="get">
+            <form action="loginEmprAfterCad" method="post">
                 <div class="form-header">
                     <div class="title">
                         <h1>Cadastre sua Empresa</h1>
@@ -21,7 +22,7 @@
                     </div>
                     <div class="input-box">
                         <label for="Cnpj">CNPJ</label>
-                        <input id="Cnpj" type="Cnpj" name="CNPJ" placeholder="00.000.000/0000-00" required>
+                        <input id="Cnpj" type="Cnpj" name="Cnpj" placeholder="00.000.000/0000-00" required>
                     </div>
 
                     <div class="input-box">
@@ -31,17 +32,17 @@
 
                     <div class="input-box">
                         <label for="number">Telefone</label>
-                        <input id="number" type="tel" name="number" placeholder="(xx) xxxx-xxxx" required>
+                        <input id="number" type="text" name="number" placeholder="(xx) xxxx-xxxx" required>
                     </div>
 
                     <div class="input-box">
                         <label for="number">Whatsapp </label>
-                        <input id="number" type="tel" name="number" placeholder="(xx) xxxx-xxxx" required>
+                        <input type="text" name="number_whatsapp" id="number_whatsapp" placeholder="(xx) xxxx-xxxx" required>
                     </div>
 
                     <div class="input-box">
                         <label for="endereco">Cep</label>
-                        <input id="endereco" type="endereco" name="endereco" placeholder="00000-000" required>
+                        <input id="endereco" type="endereco" name="endereco" placeholder="00000-000" onblur="verificarcep()" required>
                     </div>
 
                     <div class="input-box">
@@ -83,7 +84,7 @@
                 </div>
 
                 <div class="continue-button">
-                    <button><a href="usuarioPERFIL.html">Continuar</a> </button>
+                    <button style="font-size: 15px; color: white " type="submit">Continuar</button>
                 </div>
             </form>
         </div>

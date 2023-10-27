@@ -8,7 +8,7 @@
   background:linear-gradient(rgba(17, 17, 17, 0.8), rgba(20, 20, 20, 1)), url(../IMG/PLANO.jpg);
   background-size: cover;
 }
-a {
+button {
   text-decoration: none;
   color: #555;
 }
@@ -34,7 +34,8 @@ ul {
 .pricing-list {
   font-size: 1.5em;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
   margin: 50px auto;
   max-width: 800px;
   width: 100%;
@@ -73,6 +74,7 @@ ul {
   margin: 0 5px;
 }
 .pricing-list .item.profissional {
+  
   background: #b81b1b;
   border: 0;
   box-shadow: inset 0px 20px 44px -13px rgba(0, 0, 0, 0.31);

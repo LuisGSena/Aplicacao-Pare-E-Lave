@@ -1,10 +1,18 @@
 <head>
 <title>Cadastro do usuario</title>
 <link rel="stylesheet" href="/style/usuario_login.css">
+ <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const error = urlParams.get("error");
+
+    if (error) {
+      alert(error);
+    }
+  </script>
 </head>
 <body class="corpo-login-user">
 <main id="container">
-        <form id="login_form">
+        <form id="login_form" method="post" action="/loginsuccessuser">
             <!-- FORM HEADER -->
             <div id="form_header">
                 <h1>Login</h1>
