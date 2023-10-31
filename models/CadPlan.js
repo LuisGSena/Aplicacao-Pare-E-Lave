@@ -1,7 +1,6 @@
 const {Sequelize, DataTypes} = require("sequelize");
 
-const sequelize = new Sequelize("appTcc", "root", "gui04112", {
-    host: "localhost",
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialect: "mysql"
 });
     const CadPlan = sequelize.define("CadPlan", {

@@ -48,7 +48,8 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
+.usuarioHome {
+  overflow-x: hidden;
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
@@ -76,7 +77,7 @@ img {
 }
 
 .container {
-  max-width: 1024px;
+  max-width: 70%;
   margin-right: 1.5rem;
   margin-left: 1.5rem;
 }
@@ -226,13 +227,10 @@ img {
 
 /*=============== HOME ===============*/
 .home {
-  position: relative;
   overflow: hidden;
 }
 
 .home__container {
-  
-  position: relative;
   padding-top: 4rem;
   row-gap: 3rem;
 }
@@ -552,7 +550,8 @@ img {
 }
 
 .ofertas__container {
-  grid-template-rows: max-content 224px;
+  display: flex;
+  grid-template-rows: max-content 100%;
 }
 
 .ofertas__bg {
@@ -567,10 +566,12 @@ img {
 
 .ofertas__data,
 .ofertas__img {
+  
   position: relative;
 }
 
 .ofertas__data {
+  
   text-align: center;
 }
 
@@ -845,7 +846,6 @@ img {
   }
 
   .home__container {
-    
     padding-top: 2rem;
   }
 

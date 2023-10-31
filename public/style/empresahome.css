@@ -4,3 +4,7 @@
 #carregarimagem{
     margin-top: 200px  ;
 }
+*{
+    margin: 0;
+    padding: 0;
+}

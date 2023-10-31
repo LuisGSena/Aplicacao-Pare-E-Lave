@@ -35,21 +35,6 @@
     background-color: #fff;
 }
 
-.form-header {
-    margin-top: 7rem;
-    display: flex;
-    justify-content: space-between;
-}
-.form-header h1::after {
-    content: '';
-    display: block;
-    width: 5rem;
-    height: 0.3rem;
-    background-color: #c44545;
-    margin: 0 auto;
-    position: absolute;
-    border-radius: 10px;
-}
 
 .input-group {
     display: flex;

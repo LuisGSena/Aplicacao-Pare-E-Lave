@@ -48,7 +48,7 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
+.corpo-agendamento {
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
@@ -225,7 +225,10 @@ img {
 }
 
 .agendamento__textos {
+  padding: 2rem;
+  align-self: center;
   text-align: center;
+  font-size: larger;
   border-left: 2rem;
   max-width: 100%;
 }

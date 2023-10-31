@@ -1,20 +1,13 @@
-<head>
-    <link rel="stylesheet" href="/style/usuariohome.css">
-</head>
 <!DOCTYPE html>
 <html lang="Pt-Br">
-
 <head>
+    <link rel="stylesheet" href="/style/usuariohome.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
     <!--=============== CSS ===============-->
-
     <title>Pare & Lave</title>
 </head>
-
-<body>
+<body class="usuarioHome">
 
     <!--==================== MAIN ====================-->
     <main class="main">
@@ -200,6 +193,7 @@
                             <li class="icone-estrela" data-avaliacao="4"></li>
                             <li class="icone-estrela" data-avaliacao="5"></li>
                         </ul>
+                        <img src="/IMG/FlipWash.png" alt="" style="width: 60%; align-items: center;" class="popular__img">
                         <h3 class="featured__price">{{bairro}}</h3>
                         <form action="/agendamento" method="post">
                             <input type="hidden" name="cnpj" value="{{CNPJ}}">
@@ -214,7 +208,7 @@
         </section>
 
         <!--==================== OFERTAS ====================-->
-        <section class="ofertas section">
+        {{!-- <section class="ofertas section">
             <div class="ofertas__container container grid">
                 <img src="/IMG/offer-bg.png" alt="" class="ofertas__bg">
 
@@ -235,7 +229,7 @@
 
                 <img src="/IMG/ofertas.png" alt="" class="ofertas__img">
             </div>
-        </section>
+        </section> --}}
 
 
     </main>

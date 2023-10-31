@@ -5,6 +5,7 @@ const MySQLStore = require("express-mysql-session")(session);
 const mysql = require("mysql2")
 const passport = require("passport")
 const handlebars = require("express-handlebars")
+const flash = require("connect-flash");
 const PORT = 8080
 const app = express()
 const fs = require("fs");
@@ -38,12 +39,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 //conexão com banco
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: process.env.USER_NAME,
-  password: process.env.PASSWORD_BANKSQL,
-  database: process.env.DATABASE_NAME,
-});
+const db = mysql.createConnection(process.env.DATABASE_URL);
 
 
 db.connect((err) => {
@@ -72,6 +68,7 @@ app.use(session({
   },
   store: sessionStore
 }))
+
 // config do passport e handlebars
 require("./localStrategy")(passport)
 require("./passport-setup")
@@ -82,9 +79,6 @@ app.set("view engine", "handlebars")
 
 app.use(passport.initialize())
 app.use(passport.session())
-
-
-
 //config rotas get
 app.get("/", (req, res) => {
   const currentURL = req.originalUrl;
@@ -116,7 +110,7 @@ app.get("/cadastroUsuario", (req, res) => {
   res.render("pages/usuarioCad", { isHome })
 })
 
-app.get("/cadastroEmpresa", (req, res) => {
+app.get("/cadastroEmpresa", (req, res) => {//ajeitar css
   const currentURL = req.originalUrl;
   const isHome = currentURL === '/cadastroEmpresa';
   res.render("pages/empresaCad", { isHome })
@@ -135,124 +129,44 @@ app.get("/empresa_login", (req, res) => {
 
 })
 
-app.get("/usuariohome", async (req, res) => {
+app.get("/usuariohome", async (req, res) => {// ajeitar css
+  const currentURL = req.originalUrl;
+  const isHomeApp = currentURL === '/usuariohome';
     let empresas = await CadEmpr.findAll({})
     empresas = empresas.map(empresa => empresa.get({ plain: true }))
     console.log(empresas)
-    res.render("pages/usuariohome", { empresas: empresas })
+    res.render("pages/usuariohome", { empresas: empresas, isHomeApp})
 })
 
-app.get("/empresahome", async (req, res) => {
+app.get("/empresahome", async (req, res) => { //ajeitar css e handlebars
     let empresas = await CadEmpr.findAll({})
     empresas = empresas.map(empresa => empresa.get({ plain: true }))
     res.render("pages/empresahome", { empresas: empresas })
 })
 
-app.get("/empresa/:cnpj", async (req, res) => {
-  const cnpj = req.params.cnpj;
-
-  let empresa = await CadEmpr.findOne({ where: { CNPJ: cnpj } });
-  empresa = empresa.get({ plain: true })
-  if (!empresa) {
-    res.status(404).send("Empresa não encontrada");
-  } else {
-    res.render("pages/detalhesLavaJato", { empresa: empresa });
-  }
-});
-
-app.get("/loja", async (req,res) => {
+app.get("/loja", async (req,res) => { //ajeitar func handlebars e css
   const currentURL = req.originalUrl;
   const isHomeEmpr = currentURL === '/loja';
-
-
     res.render("pages/loja", { isHomeEmpr });
 })
 
-app.get("/estoque", async (req,res) => {
+app.get("/estoque", async (req,res) => { //ajeitar func handlebars e css
   const currentURL = req.originalUrl;
   const isHomeEmpr = currentURL === '/estoque';
     res.render("pages/estoque", { isHomeEmpr });
 })
-app.get("/empresaDetails", async (req,res) => {
+app.get("/empresaDetails", async (req,res) => { //ajeitar func handlebars
   const currentURL = req.originalUrl;
   const isHomeEmpr = currentURL === '/empresaDetails';
-    res.render("pages/detalhesLavaJato", { isHomeEmpr });
+    res.render("pages/empresahome", { isHomeEmpr });
 })
 
-app.get("/qrcode", (req,res) =>{
+app.get("/qrcode", (req,res) =>{// ajeitar config do qrcode
   res.render("pages/qrcode")
 })
 
 // criação das rotas post
 
-app.post("/envioImage", upload.single('imagem'), async (req, res) => {
-
-  if (req.session.empr && req.session.empr.CNPJ && req.file) {
-    const { filename } = req.file;
-    const cnpj = req.session.empr.CNPJ;
-
-    const imagePath = `./public/uploads/${filename}`;
-    const imageBuffer = fs.readFileSync(imagePath);
-
-    CadEmpr.update(
-      { imagem: imageBuffer },
-      { where: { CNPJ: cnpj } }
-    )
-      .then(() => {
-        fs.unlinkSync(imagePath);
-        console.log("Imagem enviada com sucesso")
-        res.status(200).send("Imagem enviada com sucesso.");
-      })
-      .catch((error) => {
-        console.error("Erro ao atualizar o registro no banco de dados:", error);
-        res.status(500).send("Erro ao enviar a imagem.");
-      });
-  } else {
-    res.status(400).send("Nenhuma imagem enviada ou empresa não está logada.");
-  }
-
-});
-
-app.post("/agendamento", async (req, res) => {
-  const currentURL = req.originalUrl;
-  const isHomeEmpr = currentURL === '/agendamento';
-  const cnpjValue = req.body.cnpj;
-
-  let empresa = await CadEmpr.findOne({ where: { CNPJ: cnpjValue } });
-  empresa = empresa.get({ plain: true })
-  if (!empresa) {
-    res.status(404).send("Empresa não encontrada");
-  } else {
-    console.log("info empresa:", empresa)
-    res.render("pages/agendamento", { empresa: empresa, isHomeEmpr });
-  }
-});
-
-app.post("/loginsuccessuser", async (req, res, next) => {
-  try {
-    passport.authenticate("local", {
-      successRedirect: "/usuariohome",
-      failureRedirect: "/usuario_login",
-      failureFlash: true
-      
-    })(req, res, next)
-  } catch {
-    console.log("erro ao se conectar")
-  }
-})
-
-app.post("/loginsuccessempr", (req, res, next) => {
-  try {
-    passport.authenticate("local", {
-      successRedirect: "/empresahome",
-      failureRedirect: "/empresa_login",
-      failureFlash: true
-    })(req, res, next)
-
-  } catch {
-    console.log("erro ao se conectar")
-  }
-})
 app.post("/loginEmprAfterCad", async (req, res) => {
   try {
     let name = req.body.firstname
@@ -301,6 +215,81 @@ app.post("/loginUserAfterCad", async (req, res) => {
   }
 
 })
+//authenticate local
+app.post("/loginsuccessuser", async (req, res, next) => {
+  try {
+    passport.authenticate("local", {      
+      successRedirect: "/usuariohome",
+      failureRedirect: "/usuario_login",
+      failureFlash: true
+      
+    })(req, res, next)
+  } catch {
+    console.log("erro ao se conectar")
+  }
+})
+
+app.post("/loginsuccessempr", (req, res, next,err) => {
+  try {
+    passport.authenticate("local", {
+      successRedirect: "/empresahome",
+      failureRedirect: "/empresa_login",
+      failureFlash: true
+    })(req, res, next)
+    if(err){
+      req.flash("error_msg", "Erro ao se conectar, Tente novamente!!")
+    } else {
+      req.flash("success_msg", "Usuario Autenticado com sucesso!!")
+    }
+  } catch {
+    console.log("erro ao se conectar")
+  }
+})
+ 
+app.post("/envioImage", upload.single('imagem'), async (req, res) => {
+
+  if (req.session.empr && req.session.empr.CNPJ && req.file) {
+    const { filename } = req.file;
+    const cnpj = req.session.empr.CNPJ;
+
+    const imagePath = `./public/uploads/${filename}`;
+    const imageBuffer = fs.readFileSync(imagePath);
+
+    CadEmpr.update(
+      { imagem: imageBuffer },
+      { where: { CNPJ: cnpj } }
+    )
+      .then(() => {
+        fs.unlinkSync(imagePath);
+        console.log("Imagem enviada com sucesso")
+        res.status(200).send("Imagem enviada com sucesso.");
+      })
+      .catch((error) => {
+        console.error("Erro ao atualizar o registro no banco de dados:", error);
+        res.status(500).send("Erro ao enviar a imagem.");
+      });
+  } else {
+    res.status(400).send("Nenhuma imagem enviada ou empresa não está logada.");
+  }
+
+});
+
+app.post("/agendamento", async (req, res) => {
+  const currentURL = req.originalUrl;
+  const isHomeEmpr = currentURL === '/agendamento';
+  const cnpjValue = req.body.cnpj;
+
+  let empresa = await CadEmpr.findOne({ where: { CNPJ: cnpjValue } });
+  empresa = empresa.get({ plain: true })
+  if (!empresa) {
+    res.status(404).send("Empresa não encontrada");
+  } else {
+    console.log("info empresa:", empresa)
+    res.render("pages/agendamento", { empresa: empresa, isHomeEmpr });
+  }
+});
+
+
 
 app.post("/realizarPagamento", async (req, res) => {
   let id_compra = req.body.id_compra
