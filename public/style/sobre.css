@@ -1,11 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600&display=swap");
 
 /* Zerando CSS */
 
 * {
     margin: 0;
     padding: 0;
+}
+
+html{
+    font-size: 62.5%;
+    color: white;
+    font-family: 'Exo', sans-serif;
 }
 
 .corpo-sobre {
@@ -37,7 +42,7 @@
 /* Menu - Quem Somos */
 
 .quemsomos{
-    color: darkgray;
+    color: rgb(255, 255, 255);
     font-size: 20px;
     margin-top: 20%px;
     margin-left: 7%;

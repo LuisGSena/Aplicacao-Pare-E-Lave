@@ -53,6 +53,10 @@ body {
     font-size: var(--normal-font-size);
     background-color: var(--body-color);
     color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
 }
 
 h1,
@@ -77,8 +81,11 @@ img {
 
 .container {
     max-width: 1024px;
+    height: auto;
     margin-right: 1.5rem;
     margin-left: 1.5rem;
+    justify-content: center;
+    align-self: center;
 }
 
 .grid {
@@ -215,13 +222,15 @@ img {
     display: flex;
     justify-content: center;
     text-align: center;
-    margin-bottom: 12rem;
 }
 
 .qrcode__titulo {
     font-size: var(--h1-font-size);
     margin-bottom: 2rem;
     max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 

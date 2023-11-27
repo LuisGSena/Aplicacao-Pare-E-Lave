@@ -139,9 +139,11 @@ app.get("/usuariohome", async (req, res) => {// ajeitar css
 })
 
 app.get("/empresahome", async (req, res) => { //ajeitar css e handlebars
+    const currentURL = req.originalUrl;
+    const isHomeEmpr = currentURL === '/estoque';
     let empresas = await CadEmpr.findAll({})
     empresas = empresas.map(empresa => empresa.get({ plain: true }))
-    res.render("pages/empresahome", { empresas: empresas })
+    res.render("pages/empresahome", { empresas: empresas, isHomeEmpr })
 })
 
 app.get("/loja", async (req,res) => { //ajeitar func handlebars e css
@@ -162,9 +164,8 @@ app.get("/empresaDetails", async (req,res) => { //ajeitar func handlebars
 })
 
 app.get("/qrcode", (req,res) =>{// ajeitar config do qrcode
-  res.render("pages/qrcode")
+  res.render("pages/qrcode", )
 })
-
 // criação das rotas post
 
 app.post("/loginEmprAfterCad", async (req, res) => {
@@ -275,8 +276,6 @@ app.post("/envioImage", upload.single('imagem'), async (req, res) => {
 });
 
 app.post("/agendamento", async (req, res) => {
-  const currentURL = req.originalUrl;
-  const isHomeEmpr = currentURL === '/agendamento';
   const cnpjValue = req.body.cnpj;
 
   let empresa = await CadEmpr.findOne({ where: { CNPJ: cnpjValue } });
@@ -285,7 +284,7 @@ app.post("/agendamento", async (req, res) => {
     res.status(404).send("Empresa não encontrada");
   } else {
     console.log("info empresa:", empresa)
-    res.render("pages/agendamento", { empresa: empresa, isHomeEmpr });
+    res.render("pages/agendamento", { empresa: empresa});
   }
 });
 

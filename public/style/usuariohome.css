@@ -13,9 +13,6 @@
   --container-color: hsl(219, 4%, 7%);
 
   --body-font: 'Exo', sans-serif;
-  --h1-font-size: 1.5rem;
-  --h2-font-size: 1.25rem;
-  --h3-font-size: 1rem;
   --normal-font-size: .938rem;
   --small-font-size: .813rem;
   --smaller-font-size: .75rem;
@@ -92,7 +89,7 @@ img {
 }
 
 .section__titulo {
-  font-size: var(--h2-font-size);
+  font-size: 30px;
   text-align: center;
   margin-bottom: 2.5rem;
 }
@@ -240,12 +237,12 @@ img {
 }
 
 .home__titulo {
-  font-size: var(--h1-font-size);
+  font-size: 40px;
   margin-bottom: 1rem;
 }
 
 .home__subtitulo {
-  font-size: var(--h3-font-size);
+  font-size: 25px;
   margin-bottom: .25rem;
 }
 
@@ -272,9 +269,9 @@ img {
 .button {
   background-color: var(--first-color);
   color: var(--white-color);
-  padding: 1rem 2rem;
+  padding: 2rem 5rem;
   border-radius: .25rem;
-  font-size: var(--normal-font-size);
+  font-size: 15px;
   transition: .3s;
 }
 
@@ -291,19 +288,14 @@ img {
   position: relative;
 }
 
-.agendar__img {
-  width: 310px;
-  border-radius: .5rem;
-}
-
 .agendar__card {
-  width: 180px;
+  width: 300px;
   position: absolute;
   right: 0;
   bottom: -2.5rem;
   background-color: hsla(0, 0%, 100%, .1);
   backdrop-filter: blur(16px);
-  padding: 1rem .75rem;
+  padding: 2rem .75rem;
   text-align: center;
   border-radius: 1.25rem;
 }
@@ -313,10 +305,6 @@ img {
   margin-bottom: .5rem;
 }
 
-.agendar__card-description {
-  font-size: var(--smaller-font-size);
-}
-
 .agendar__titulo {
   text-align: initial;
   margin-top: 3rem;
@@ -324,9 +312,22 @@ img {
 }
 
 .agendar__descricao {
+  font-size: 20px;
   margin-bottom: 2rem;
 }
 
+.agendar__button {
+  background-color: var(--first-color);
+  color: var(--white-color);
+  padding: 2rem 5rem;
+  border-radius: .25rem;
+  font-size: 18px;
+  transition: .3s;
+}
+
+.agendar__button:hover {
+  background-color: var(--first-color-alt);
+}
 /*=============== POPULAR ===============*/
 .popular__container {
   display: flex;
@@ -359,12 +360,12 @@ img {
 }
 
 .popular__titulo {
-  font-size: var(--h2-font-size);
+  font-size: 20px;
   margin-bottom: .25rem;
 }
 
 .popular__subtitulo {
-  font-size: var(--normal-font-size);
+  font-size: 18px;
   color: var(--text-color);
   font-weight: 400;
 }
@@ -533,9 +534,9 @@ img {
 }
 
 .icone-estrela {
+  font-size: 2rem;
   list-style-type: none;
   border: 1px solid #fff;
-  cursor: pointer;
   color: #ebdb00;
   border: transparent;
 }
@@ -544,6 +545,32 @@ img {
   content: "\2605";
 }
 
+/*=============== PEDIDOS ===============*/
+.cards-pedidos {
+  display: flex;
+  justify-content: space-between; 
+  width: 790px;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  background-color: var(--first-color); 
+  padding: 30px; 
+  border-radius: 1.25rem;
+}
+
+.pedidos__card {
+  display: flex;
+  flex-direction: column;
+}
+
+.servico__subtitulo {
+  font-size: x-large;
+  flex: 1;
+}
+
+.qrcode__div{
+  display: flex;
+  width: 256px;
+}
 /*=============== OFERTAS ===============*/
 .ofertas {
   position: relative;
@@ -869,6 +896,7 @@ img {
 
   .agendar__titulo {
     margin-top: 2rem;
+    font-size: 30px;
   }
 
   .agendar__card {
@@ -995,9 +1023,12 @@ img {
 .card{
     position: relative;
     width: 22% ;
-    height: 27vh;
+    height: 40vh;
     padding: 20px;
-    border: 1px solid #ccc;
     border-radius: 10px;
-    background: linear-gradient(to bottom right, #1B202A, #181C23, #111314);
+    background: var(--container-color);
+    transition: .3s;
+}
+.card:hover .popular__img{
+  transform: translateY(-.25rem);
 }
